@@ -1,0 +1,34 @@
+{
+  "author": "Josh Faul <josh.faul@gmail.com>",
+  "name": "Koi",
+  "description": "Koi Online Illustration",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~v0.4.11"
+  },
+  "dependencies": {
+		"nomnom": "",
+		"connect": "",
+		"connect-access-control": "",
+		"express": "",
+		"cluster": "",
+		"socket.io": "",
+		"stylus": "",
+
+		"redis": "",
+		"everyauth": "",
+
+		"requirejs": "",
+		"uglify-js": "",
+		"jsdom": "",
+		"vows": "",
+
+		"colors": ""
+	},
+
+  "devDependencies": {
+	}
+}

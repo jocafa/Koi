@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- <html manifest="koi.appcache?v=1"> -->
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<title>Koi</title>
+
+		<meta name="description" content="">
+		<link rel="author" href="humans.txt">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Reset CSS -->
+		<link rel="stylesheet" href="reset.css">
+
+		<!-- Shortcut icon sizes -->
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icons/114.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icons/72.png">
+		<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icons/114.png">
+		<link rel="shortcut icon" href="images/apple-touch-icons/29.png">
+
+		<!-- Miscellaneous iOS settings -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="apple-touch-startup-image" href="images/splash.png">
+
+		<!-- JSConsole FTW! -->
+		<!--<script src="http://jsconsole.com/remote.js?koi"></script>-->
+
+		<!-- Socket.IO for great WebSocket justice -->
+		<!-- <script src="socket.io/socket.io.js"></script> -->
+
+		<script src="Support/curl.min.js"></script>
+		<script type="text/javascript">
+			curl(['Client', 'domReady!'], function (Client) {
+				new Client();
+			});
+		</script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Events</title>
+		<script src="http://jocafa.com/toolbox/JSLitmus.js"></script>
+		<script type="text/javascript">
+			var concurrency = 1;
+			var postMessageQueue = [];
+
+			var messagesThatShouldHaveBeenHandled = 0;
+			var messagesHandled = 0;
+
+			function absorb () {
+				messagesHandled++;
+			}
+
+			function dispatchMessage () {
+				messagesThatShouldHaveBeenHandled++;
+				postMessageQueue.push(absorb);
+				window.postMessage('message', '*');
+			}
+
+			function handleMessage (event) {
+				postMessageQueue.shift()();
+			}
+
+
+			var genericEventsHandled = 0;
+
+			function dispatchGenericEvent () {
+				var e = document.createEvent('Event');
+				e.initEvent('generic', true, true);
+				e.data = { foo: 'bar' };
+				window.dispatchEvent(e);
+			}
+
+			function handleGenericEvent (event) {
+				genericEventsHandled++;
+			}
+
+
+			window.addEventListener('DOMContentLoaded', function () {
+				window.addEventListener('message', handleMessage);
+				window.addEventListener('generic', handleGenericEvent);
+
+				JSLitmus.test('postMessage', function (count) {
+					while (count--) {
+						dispatchMessage();
+						dispatchMessage();
+						dispatchMessage();
+					}
+				});
+
+				JSLitmus.test('dispatchEvent', function (count) {
+					while (count--) {
+						dispatchGenericEvent();
+						dispatchGenericEvent();
+						dispatchGenericEvent();
+					}
+				});
+			}, false);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
